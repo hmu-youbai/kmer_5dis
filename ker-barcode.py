@@ -1,3 +1,4 @@
+import argparse
 import time
 from collections import deque
 from collections import defaultdict
@@ -169,7 +170,25 @@ def dup_base_kmer(mC_file,c_file,w_file,pos,dis=4):
 
 
 
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Duplicate Base Kmer Tool")
 
+    parser.add_argument("mC_file", type=str, help="Input mC file")
+    parser.add_argument("c_file", type=str, help="Input c file")
+    parser.add_argument("w_file", type=str, help="Output w file")
+    parser.add_argument("pos", type=int, help="Position parameter")
+    parser.add_argument("--dis", type=int, default=4, help="Distance parameter (default: 4)")
+
+    args = parser.parse_args()
+
+    mC_file = args.mC_file
+    c_file = args.c_file
+    w_file = args.w_file
+    pos = args.pos
+    dis = args.dis
+
+    # 调用函数并传入参数
+    dup_base_kmer(mC_file, c_file, w_file, pos, dis)
 
 
 
